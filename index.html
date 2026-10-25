@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<script>(function(){var BUILD="1792884355";function check(){try{fetch("./index.html?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){var m=t.match(/var BUILD="(\d+)"/);if(m&&m[1]!==BUILD){location.replace("./?v="+m[1])}}).catch(function(){})}catch(e){}}
+<script>(function(){var BUILD="1792894242";function check(){try{fetch("./index.html?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){var m=t.match(/var BUILD="(\d+)"/);if(m&&m[1]!==BUILD){location.replace("./?v="+m[1])}}).catch(function(){})}catch(e){}}
 window.addEventListener("load",check);document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible")check()});})();</script>
 <meta http-equiv="Cache-Control" content="no-cache">
 <title>pipopa lab｜ちょっと便利な無料Webアプリ一覧</title>
@@ -52,6 +52,11 @@ a.app p{margin:4px 0 8px;font-size:14px;color:var(--muted)}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tags span{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--tag);color:var(--muted)}
 footer{margin-top:32px;font-size:12.5px;color:var(--muted)}
+.wrap{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
+.copy{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 16px);display:flex;align-items:center;gap:7px;padding:12px 16px;border:0;border-radius:999px;background:var(--accent);color:var(--bg);font:600 14px var(--f);box-shadow:0 6px 18px rgba(0,0,0,.18);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}
+.copy:active{transform:scale(.95)}
+.copy:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.copy svg{width:18px;height:18px;flex:none}
 </style>
 </head>
 <body>
@@ -99,5 +104,10 @@ footer{margin-top:32px;font-size:12.5px;color:var(--muted)}
   </main>
   <footer>どのアプリも、ブラウザの共有ボタンから「ホーム画面に追加」するとアプリのように使えます。</footer>
 </div>
+<button class="copy" id="copy" type="button" aria-label="このサイトのリンクをコピー"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg><span id="copyLabel">リンクをコピー</span></button>
+<script>(function(){var U="https://pipopa-lab.github.io/applist/",b=document.getElementById("copy"),l=document.getElementById("copyLabel"),t;
+function done(ok){l.textContent=ok?"コピーしました":"コピーできませんでした";clearTimeout(t);t=setTimeout(function(){l.textContent="リンクをコピー"},1800)}
+function fallback(){try{var a=document.createElement("textarea");a.value=U;a.setAttribute("readonly","");a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();a.setSelectionRange(0,U.length);var ok=document.execCommand("copy");document.body.removeChild(a);done(ok)}catch(e){done(false)}}
+b.addEventListener("click",function(){if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(U).then(function(){done(true)},fallback)}else fallback()});})();</script>
 </body>
 </html>
