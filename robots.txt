@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pipopa-lab.github.io/applist/sitemap.xml
+Sitemap: https://inaba-tools.github.io/applist/sitemap.xml
